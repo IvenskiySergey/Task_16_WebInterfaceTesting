@@ -46,6 +46,5 @@ public class ApplicationForACardTest {
     @AfterEach
     void tearDown() {
         driver.quit();
-        driver = null;
     }
 }
