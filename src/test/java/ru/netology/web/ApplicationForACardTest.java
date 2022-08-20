@@ -29,7 +29,7 @@ public class ApplicationForACardTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
     }
 
     @Test
@@ -46,5 +46,6 @@ public class ApplicationForACardTest {
     @AfterEach
     void tearDown() {
         driver.quit();
+        driver = null;
     }
 }
