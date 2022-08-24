@@ -11,7 +11,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ApplicationForACardTest {
@@ -33,13 +32,13 @@ public class ApplicationForACardTest {
     }
 
     @Test
-    void test1() {
+    void successfulDebitCardApplication() {
         driver.get("http://localhost:9999/");
-        driver.findElement(By.cssSelector("span[data-test-id='name'] input")).sendKeys("Иванов Иван");
+        driver.findElement(By.cssSelector("span[data-test-id='name'] input")).sendKeys("Иван Иванов-Петров");
         driver.findElement(By.cssSelector("span[data-test-id='phone'] input")).sendKeys("+79859175033");
-        driver.findElement(By.className("checkbox__box")).click();
+        driver.findElement(By.cssSelector("label[data-test-id='agreement'] span")).click();
         driver.findElement(By.className("button_view_extra")).click();
-        String text = driver.findElement(By.className("paragraph")).getText();
+        String text = driver.findElement(By.cssSelector("p[data-test-id='order-success']")).getText();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
     }
 
